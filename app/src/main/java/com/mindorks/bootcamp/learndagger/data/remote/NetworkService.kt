@@ -1,22 +1,20 @@
 package com.mindorks.bootcamp.learndagger.data.remote
 
-import android.content.Context
+import com.mindorks.bootcamp.learndagger.data.remote.request.DummyRequest
+import com.mindorks.bootcamp.learndagger.data.remote.response.DummyResponse
+import io.reactivex.Single
+import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.Headers
+import retrofit2.http.POST
 
-import com.mindorks.bootcamp.learndagger.di.ApplicationContext
-import com.mindorks.bootcamp.learndagger.di.NetworkInfo
 
-import javax.inject.Inject
-import javax.inject.Singleton
+interface NetworkService {
 
-/**
- * Dummy class to simulate the actual NetworkService using Retrofit or OkHttp etc
- */
-@Singleton
-class NetworkService @Inject constructor(
-        @ApplicationContext private val context: Context,
-        @NetworkInfo private val apiKey: String)// do the initialisation here
-{
+    @POST(Endpoints.DUMMY)
+    fun doDummyCall(
+        @Body request : DummyRequest,
+        @Header(Networking.HEADER_API_KEY) apiKey:String = Networking.API_KEY
+    ): Single<DummyResponse>
 
-    val dummyData: String
-        get() = "NETWORK_DUMMY_DATA"
 }

@@ -17,9 +17,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            buildConfigField("String", "BASE_URL", "\"https://api.projects.bootcamp.mindorks.com/batch/blue/\"")
+            buildConfigField("String", "API_KEY", "\"BLUE19QVVAPP\"")
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"https://api.projects.bootcamp.mindorks.com/batch/blue/\"")
+            buildConfigField("String", "API_KEY", "\"BLUE19QVVAPP\"")
         }
     }
 }
